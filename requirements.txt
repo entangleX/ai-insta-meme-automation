@@ -1,0 +1,9 @@
+google-genai
+langgraph
+langchain
+fastapi
+uvicorn
+google-cloud-storage
+python-dotenv
+requests
+pydantic
