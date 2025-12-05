@@ -16,3 +16,4 @@ def get_logger(name: str) -> logging.Logger:
     logger.setLevel(logging.INFO)
     return logger
 
+git remote set-url origin https://github.com/entangleX/ai-insta-meme-automation.git
