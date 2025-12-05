@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from agents.workflow_graph import run_full_pipeline
+from backend.src.agents.workflow_graph import run_full_pipeline
 from backend.src.services.instagram_api import publish_image, InstagramAPIError
 from backend.src.config.settings import settings
 
