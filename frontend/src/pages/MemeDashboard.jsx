@@ -14,10 +14,18 @@ export default function MemeDashboard() {
     setLoading(true);
     setError("");
     try {
-      const res = await api.get("/generate_memes");
-      setMemes(res.data.memes || []);
+      const res = await api.post("/generate_memes");
+      if (res.data.status === "success") {
+        alert(`Generated ${res.data.generated_images}/${res.data.total_trends} memes for ${res.data.date}`);
+        // Redirect to review page
+        window.location.href = "/review";
+      } else {
+        setError(res.data.message || "Generation failed");
+      }
     } catch (err) {
-      setError(err?.response?.data?.detail || err.message);
+      console.error("Error generating memes:", err);
+      const errorMsg = err?.response?.data?.detail || err?.response?.data?.message || err.message || "Network Error";
+      setError(errorMsg);
     } finally {
       setLoading(false);
     }
@@ -67,7 +75,11 @@ export default function MemeDashboard() {
         publishingAll={publishingAll}
       />
       {loading && <p>Loading memes...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && (
+        <div style={{ color: "red", padding: "12px", background: "#ffe6e6", borderRadius: "4px", marginBottom: "16px" }}>
+          <strong>Error:</strong> {error}
+        </div>
+      )}
       {memes.map((item, idx) => (
         <div key={idx} style={{ marginBottom: "24px" }}>
           <h2>Topic: {item.topic}</h2>

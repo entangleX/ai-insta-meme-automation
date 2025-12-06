@@ -24,3 +24,7 @@ logs/
 *.egg-info/
 build/
 
+sources.md
+resources.py
+data/
+

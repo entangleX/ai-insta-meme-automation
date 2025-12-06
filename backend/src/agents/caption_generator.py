@@ -11,6 +11,6 @@ def generate_captions(topic):
     """
     response = client.models.generate_content(
         model="gemini-2.5-flash",
-        contents=[types.Part.from_text(prompt)]
+        contents=[types.Part.from_text(text=prompt)]
     )
     return response.text.split("\n")

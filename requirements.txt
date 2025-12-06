@@ -1,9 +1,11 @@
 google-genai
 langgraph
 langchain
+langchain-google-genai
 fastapi
 uvicorn
 google-cloud-storage
-python-dotenv
+python-dotenv 
 requests
 pydantic
+Pillow
